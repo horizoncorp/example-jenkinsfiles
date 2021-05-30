@@ -1,0 +1,16 @@
+pipeline {
+    agent {
+        docker {
+            image 'hashicorp/terraform:light'
+        }
+    }
+    stages {
+        stage('terraform version') {
+            steps {
+                script {
+                    sh 'terraform version'
+                }
+            }
+        }
+    }
+}
