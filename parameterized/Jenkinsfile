@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    stages {
+        stage('Setup parameters') {
+            steps {
+                script { 
+                    properties([
+                        parameters([
+                            choice(
+                                choices: ['CREATE', 'DESTROY', 'PLAN'], 
+                                name: 'ACTION'
+                            ),
+                            choice(
+                                choices: ['spain', 'greece', 'italy', 'asia', 'bibd', 'product', 'agcs', 'australia'], 
+                                name: 'OE'
+                            ),
+                            choice(
+                                choices: ['us-east-2', 'eu-west-3', 'eu-central-1', 'ap-southeaast-1', 'ap-southeaast-2'], 
+                                name: 'REGION'
+                            ),
+                            choice(
+                                choices: ['dev', 'uat', 'prd'], 
+                                name: 'STAGE'
+                            ),
+                            string(
+                                defaultValue: '', 
+                                name: 'ACCOUNT_NR', 
+                                trim: true
+                            )
+                        ])
+                    ])
+                }
+            }
+        }
+    }   
+}
