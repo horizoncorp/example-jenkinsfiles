@@ -6,6 +6,8 @@ pipeline {
                 script {
                     sh 'curl --user admin:admin -X POST -F "jenkinsfile=<parameterized/Jenkinsfile" ${JENKINS_URL}/pipeline-model-converter/validate'
                     sh 'curl --user admin:admin -X POST -F "jenkinsfile=<docker-agent/Jenkinsfile" ${JENKINS_URL}/pipeline-model-converter/validate'
+                    sh 'curl --user admin:admin -X POST -F "jenkinsfile=<aws-authenitcation/Jenkinsfile.1" ${JENKINS_URL}/pipeline-model-converter/validate'
+                    sh 'curl --user admin:admin -X POST -F "jenkinsfile=<aws-authenitcation/Jenkinsfile.2" ${JENKINS_URL}/pipeline-model-converter/validate'
                 }
             }
         }

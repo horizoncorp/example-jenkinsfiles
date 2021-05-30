@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    options {
+        // This required two plugins to be added
+        // 1. CloudBees AWS Credentials Plugin
+        // 2. Pipeline: AWS Steps
+        withAWS(credentials:'aws')
+    }
+    stages {
+        stage('terraform version') {
+            steps {
+                script {
+                    sh '~/terraform version'
+                    sh '~/terraform init'
+                    sh '~/terraform plan'
+                }
+            }
+        }
+    }
+}
